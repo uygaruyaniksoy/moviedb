@@ -18,6 +18,4 @@ public class UseCaseScheduler {
         }
         executor.execute(runnable);
     }
-
-
 }

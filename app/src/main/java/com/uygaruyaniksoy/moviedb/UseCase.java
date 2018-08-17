@@ -1,5 +1,9 @@
 package com.uygaruyaniksoy.moviedb;
 
+import android.os.AsyncTask;
+
+import org.json.JSONObject;
+
 public abstract class UseCase<T extends UseCase.Request, R extends UseCase.Response> {
     private T request;
     private Callback<R> callback;

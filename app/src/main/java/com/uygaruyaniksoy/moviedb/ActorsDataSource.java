@@ -3,5 +3,5 @@ package com.uygaruyaniksoy.moviedb;
 import java.util.List;
 
 public interface ActorsDataSource {
-    public List<Actor> getActors();
+    public void getActors(UseCase.Callback<GetActors.Response> callback, GetActors.Request request);
 }

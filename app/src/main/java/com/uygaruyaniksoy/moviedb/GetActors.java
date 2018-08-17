@@ -3,11 +3,15 @@ package com.uygaruyaniksoy.moviedb;
 import java.util.List;
 
 public class GetActors extends UseCase<GetActors.Request, GetActors.Response> {
-    private ActorsRepository repository;
+    private ActorsDataSource repository;
+
+    public GetActors(ActorsDataSource repository) {
+        this.repository = repository;
+    }
 
     @Override
     public void run() {
-        repository.getActors();
+        repository.getActors(getCallback(), getRequest());
         // make getActors receive a callback and fetch actors from API
     }
 
