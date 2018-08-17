@@ -4,14 +4,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.any;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ActorsPresenterTest {
@@ -25,25 +26,20 @@ public class ActorsPresenterTest {
 
     @Before
     public void setUp() {
-        presenter = new ActorsPresenter(view, actorsRepository, new GetActors());
+        presenter = new ActorsPresenter(view, actorsRepository, new GetActors(actorsRepository));
     }
 
     @Test
     public void shouldInitPresenterForViewWhenPresenterInitialized() {
-        ActorsPresenter presenter = new ActorsPresenter(view, actorsRepository, new GetActors());
+        ActorsPresenter presenter = new ActorsPresenter(view, actorsRepository, new GetActors(actorsRepository));
 
         verify(view).initPresenter(presenter);
     }
 
     @Test
-    public void shouldLoadActorsFromRepositoryAndPassThemToTheView() {
-        List<Actor> actors = Arrays.asList(new Actor(), new Actor(), new Actor());
-        when(actorsRepository.getActors()).thenReturn(actors);
-
+    public void shouldLoadActorsFromRepository() {
         presenter.loadActors();
 
-        verify(actorsRepository).getActors();
-        verify(view).displayActors(actors);
+        verify(actorsRepository).getActors(any(UseCase.Callback.class), any(GetActors.Request.class));
     }
-
 }
