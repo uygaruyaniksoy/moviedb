@@ -1,4 +1,37 @@
 package com.uygaruyaniksoy.moviedb;
 
-public class GetActors {
+import java.util.List;
+
+public class GetActors extends UseCase<GetActors.Request, GetActors.Response> {
+    private ActorsRepository repository;
+
+    @Override
+    public void run() {
+        repository.getActors();
+        // make getActors receive a callback and fetch actors from API
+    }
+
+    public static class Request implements UseCase.Request {
+        private int page;
+
+        public Request(int page) {
+            this.page = page;
+        }
+
+        public int getPage() {
+            return page;
+        }
+    }
+
+    public static class Response implements UseCase.Response {
+        private List<Actor> actors;
+
+        public Response(List<Actor> actors) {
+            this.actors = actors;
+        }
+
+        public List<Actor> getActors() {
+            return actors;
+        }
+    }
 }

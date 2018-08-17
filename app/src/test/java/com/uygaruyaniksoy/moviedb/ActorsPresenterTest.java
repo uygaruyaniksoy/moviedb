@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
@@ -26,12 +25,12 @@ public class ActorsPresenterTest {
 
     @Before
     public void setUp() {
-        presenter = new ActorsPresenter(view, actorsRepository);
+        presenter = new ActorsPresenter(view, actorsRepository, new GetActors());
     }
 
     @Test
     public void shouldInitPresenterForViewWhenPresenterInitialized() {
-        ActorsPresenter presenter = new ActorsPresenter(view, actorsRepository);
+        ActorsPresenter presenter = new ActorsPresenter(view, actorsRepository, new GetActors());
 
         verify(view).initPresenter(presenter);
     }

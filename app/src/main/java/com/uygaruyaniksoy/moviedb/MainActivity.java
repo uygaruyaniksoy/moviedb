@@ -14,7 +14,9 @@ public class MainActivity extends AppCompatActivity implements ActorsView {
         setContentView(R.layout.activity_main);
 
         ActorsRepository actorsRepository = new ActorsRepository();
-        presenter = new ActorsPresenter(this, actorsRepository);
+        presenter = new ActorsPresenter(this,
+                actorsRepository,
+                new GetActors());
     }
 
     @Override
