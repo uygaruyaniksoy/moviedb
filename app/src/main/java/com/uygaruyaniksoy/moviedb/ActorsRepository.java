@@ -1,8 +1,9 @@
 package com.uygaruyaniksoy.moviedb;
 
-/**
- * Created by uygar on 8/13/18.
- */
+import java.util.List;
 
-public class ActorsRepository {
+public class ActorsRepository implements ActorsDataSource{
+    public List<Actor> getActors() {
+        return null;
+    }
 }
