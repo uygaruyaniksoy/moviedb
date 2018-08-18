@@ -16,6 +16,7 @@ import com.uygaruyaniksoy.moviedb.AsyncImageTask;
 import com.uygaruyaniksoy.moviedb.R;
 import com.uygaruyaniksoy.moviedb.actors.domain.Actor;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,12 @@ public class ActorsListAdapter extends ArrayAdapter<Actor> {
 
     public void pushActors(List<Actor> actors) {
         this.actors.addAll(this.actors.size(), actors);
+        this.actors.sort(new Comparator<Actor>() {
+            @Override
+            public int compare(Actor actor1, Actor actor2) {
+                return -Double.compare(actor1.getPopularity(), actor2.getPopularity());
+            }
+        });
     }
 
     @NonNull
@@ -44,6 +51,8 @@ public class ActorsListAdapter extends ArrayAdapter<Actor> {
             vi = LayoutInflater.from(getContext());
             convertView = vi.inflate(R.layout.row_item, null);
         }
+        ImageView image = convertView.findViewById(R.id.actorImage);
+        image.setVisibility(View.INVISIBLE);
 
         Actor actor = getItem(position);
 
@@ -51,8 +60,6 @@ public class ActorsListAdapter extends ArrayAdapter<Actor> {
         name.setText(actor.getName());
         TextView popularityScore = convertView.findViewById(R.id.actorPopularityScore);
         popularityScore.setText(actor.getPopularity().toString());
-        ImageView image = convertView.findViewById(R.id.actorImage);
-        image.setVisibility(View.INVISIBLE);
         if (cache.containsKey(actor.getProfilePath())) {
             image.setImageBitmap(cache.get(actor.getProfilePath()));
             image.setVisibility(View.VISIBLE);
