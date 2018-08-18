@@ -33,7 +33,7 @@ public class ActorsListAdapter extends ArrayAdapter<Actor> {
     }
 
     public void pushActors(List<Actor> actors) {
-        this.actors.addAll(actors);
+        this.actors.addAll(this.actors.size(), actors);
     }
 
     @NonNull

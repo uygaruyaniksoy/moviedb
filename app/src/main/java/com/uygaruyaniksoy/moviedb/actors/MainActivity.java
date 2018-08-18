@@ -3,6 +3,7 @@ package com.uygaruyaniksoy.moviedb.actors;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.uygaruyaniksoy.moviedb.actors.domain.Actor;
@@ -13,7 +14,7 @@ import com.uygaruyaniksoy.moviedb.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ActorsView {
+public class MainActivity extends AppCompatActivity implements ActorsView, AbsListView.OnScrollListener {
     private BasicPresenter presenter;
     private ActorsListAdapter adapter;
     private ListView actorsList;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements ActorsView {
         setContentView(R.layout.activity_main);
 
         actorsList = findViewById(R.id.actorsList);
+        actorsList.setOnScrollListener(this);
 
         ActorsRepository actorsRepository = new ActorsRepository();
         presenter = new ActorsPresenter(this,
@@ -33,21 +35,41 @@ public class MainActivity extends AppCompatActivity implements ActorsView {
 
     @Override
     public void initPresenter(BasicPresenter presenter) {
-        this.presenter = presenter;
         presenter.start();
     }
 
     @Override
-    public void displayActors(List<Actor> actors) {
+    public void displayActors(final List<Actor> actors) {
         if (adapter == null) {
             adapter = new ActorsListAdapter(getApplicationContext(), new ArrayList<Actor>());
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    actorsList.setAdapter(adapter);
+                }
+            });
         }
-        adapter.pushActors(actors);
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                actorsList.setAdapter(adapter);
+                adapter.pushActors(actors);
+                adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView absListView, int i) {
+
+    }
+
+    @Override
+    public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        int offset = 10;
+        if (presenter != null && !((ActorsPresenter) presenter).isLoading() && firstVisibleItem + visibleItemCount + offset > totalItemCount) {
+            ((ActorsPresenter) presenter).loadActors();
+            ((ActorsPresenter) presenter).setLoading(true);
+        }
+
     }
 }

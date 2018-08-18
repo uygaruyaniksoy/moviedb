@@ -19,6 +19,11 @@ public class AsyncImageTask extends AsyncTask<String, Void, Bitmap> {
         this.cache = cache;
     }
 
+    @Override
+    protected void onPreExecute() {
+        image.setImageDrawable(null);
+    }
+
     protected Bitmap doInBackground(String... urls) {
         String url = urls[0];
         this.url = url;

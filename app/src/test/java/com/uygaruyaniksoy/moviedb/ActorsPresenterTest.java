@@ -42,4 +42,6 @@ public class ActorsPresenterTest {
 
         verify(actorsRepository).getActors(any(UseCase.Callback.class), any(GetActors.Request.class));
     }
+
+
 }

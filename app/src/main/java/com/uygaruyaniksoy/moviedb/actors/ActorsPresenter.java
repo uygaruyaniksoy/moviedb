@@ -14,12 +14,14 @@ public class ActorsPresenter implements BasicPresenter {
     private ActorsView view;
     private ActorsDataSource repository;
     private UseCase getActors;
+    private boolean loading;
 
     private int actorsPage;
     public ActorsPresenter(ActorsView view, ActorsDataSource repository, GetActors getActors) {
         this.view = view;
         this.repository = repository;
         this.getActors = getActors;
+        this.loading = false;
 
         actorsPage = 1;
         view.initPresenter(this);
@@ -37,13 +39,23 @@ public class ActorsPresenter implements BasicPresenter {
             public void onSuccess(GetActors.Response response) {
                 List<Actor> actors = response.getActors();
                 view.displayActors(actors);
+                loading = false;
             }
 
             @Override
             public void onError() {
                 view.displayActors(new ArrayList<Actor>());
+                loading = false;
             }
         });
 
+    }
+
+    public boolean isLoading() {
+        return loading;
+    }
+
+    public void setLoading(boolean loading) {
+        this.loading = loading;
     }
 }
