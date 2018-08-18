@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ActorsView extends BasicView {
     void displayActors(List<Actor> actors);
+    void navigateToSearchActorsActivity(String search);
 }

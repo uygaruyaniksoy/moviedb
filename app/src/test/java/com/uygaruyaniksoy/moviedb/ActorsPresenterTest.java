@@ -43,5 +43,10 @@ public class ActorsPresenterTest {
         verify(actorsRepository).getActors(any(UseCase.Callback.class), any(GetActors.Request.class));
     }
 
+    @Test
+    public void shouldOpenSearchPageWhenSearchButtonPressed() {
+        presenter.navigateToSearchPage("actorname");
 
+        verify(view).navigateToSearchActorsActivity(any(String.class));
+    }
 }

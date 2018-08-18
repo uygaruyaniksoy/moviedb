@@ -48,7 +48,6 @@ public class ActorsPresenter implements BasicPresenter {
                 loading = false;
             }
         });
-
     }
 
     public boolean isLoading() {
@@ -57,5 +56,9 @@ public class ActorsPresenter implements BasicPresenter {
 
     public void setLoading(boolean loading) {
         this.loading = loading;
+    }
+
+    public void navigateToSearchPage(String actorname) {
+        view.navigateToSearchActorsActivity(actorname);
     }
 }

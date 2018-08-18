@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MovieDB</string>
+    <string name="search_actor_name">Search Actor Name</string>
+    <string name="search">Search</string>
 </resources>
