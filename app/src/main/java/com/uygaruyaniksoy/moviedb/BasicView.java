@@ -1,5 +1,5 @@
 package com.uygaruyaniksoy.moviedb;
 
-interface BasicView {
+public interface BasicView {
     public void initPresenter(BasicPresenter presenter);
 }

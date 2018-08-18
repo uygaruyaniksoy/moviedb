@@ -1,9 +1,15 @@
-package com.uygaruyaniksoy.moviedb;
+package com.uygaruyaniksoy.moviedb.actors;
+
+import com.uygaruyaniksoy.moviedb.actors.domain.Actor;
+import com.uygaruyaniksoy.moviedb.actors.usecase.GetActors;
+import com.uygaruyaniksoy.moviedb.BasicPresenter;
+import com.uygaruyaniksoy.moviedb.UseCase;
+import com.uygaruyaniksoy.moviedb.UseCaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class ActorsPresenter implements BasicPresenter {
+public class ActorsPresenter implements BasicPresenter {
 
     private ActorsView view;
     private ActorsDataSource repository;

@@ -1,4 +1,8 @@
-package com.uygaruyaniksoy.moviedb;
+package com.uygaruyaniksoy.moviedb.actors.usecase;
+
+import com.uygaruyaniksoy.moviedb.actors.domain.Actor;
+import com.uygaruyaniksoy.moviedb.actors.ActorsDataSource;
+import com.uygaruyaniksoy.moviedb.UseCase;
 
 import java.util.List;
 

@@ -1,6 +1,11 @@
-package com.uygaruyaniksoy.moviedb;
+package com.uygaruyaniksoy.moviedb.actors;
 
 import android.net.Uri;
+
+import com.uygaruyaniksoy.moviedb.actors.domain.Actor;
+import com.uygaruyaniksoy.moviedb.actors.usecase.GetActors;
+import com.uygaruyaniksoy.moviedb.UseCase;
+import com.uygaruyaniksoy.moviedb.UseCaseScheduler;
 
 import org.json.JSONArray;
 import org.json.JSONException;

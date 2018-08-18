@@ -1,6 +1,6 @@
-package com.uygaruyaniksoy.moviedb;
+package com.uygaruyaniksoy.moviedb.actors.domain;
 
-class Actor {
+public class Actor {
     private String name;
     private Double popularity;
     private String profilePath;

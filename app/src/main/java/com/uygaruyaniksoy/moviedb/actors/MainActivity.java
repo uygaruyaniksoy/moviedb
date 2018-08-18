@@ -1,7 +1,12 @@
-package com.uygaruyaniksoy.moviedb;
+package com.uygaruyaniksoy.moviedb.actors;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.uygaruyaniksoy.moviedb.actors.domain.Actor;
+import com.uygaruyaniksoy.moviedb.actors.usecase.GetActors;
+import com.uygaruyaniksoy.moviedb.BasicPresenter;
+import com.uygaruyaniksoy.moviedb.R;
 
 import java.util.List;
 

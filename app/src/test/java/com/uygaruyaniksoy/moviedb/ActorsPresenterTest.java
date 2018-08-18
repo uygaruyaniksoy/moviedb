@@ -1,17 +1,17 @@
 package com.uygaruyaniksoy.moviedb;
 
+import com.uygaruyaniksoy.moviedb.actors.ActorsDataSource;
+import com.uygaruyaniksoy.moviedb.actors.ActorsPresenter;
+import com.uygaruyaniksoy.moviedb.actors.ActorsView;
+import com.uygaruyaniksoy.moviedb.actors.usecase.GetActors;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.any;
 
 @RunWith(MockitoJUnitRunner.class)

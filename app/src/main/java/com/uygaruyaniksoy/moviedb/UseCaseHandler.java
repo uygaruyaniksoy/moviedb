@@ -1,6 +1,6 @@
 package com.uygaruyaniksoy.moviedb;
 
-class UseCaseHandler {
+public class UseCaseHandler {
     private static UseCaseHandler instance;
 
     public static UseCaseHandler getInstance() {
