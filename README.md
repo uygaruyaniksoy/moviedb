@@ -6,3 +6,4 @@ project on an emulator
 git clone https://github.com/uygaruyaniksoy/moviedb.git
 android-studio moviedb
 ```
+
